@@ -5,10 +5,12 @@
 $bad_word = $_POST['bad_word'];
 $text = $_POST['message'];
 
-$array_text = explode(' ', $text);
+$array_text = explode(' ', $text); //words
 
-$array_length = count($array_text);
+$array_length = count($array_text); //number of words
 
+
+$censured_message = str_replace($bad_word, '***', $text);
 ?>
 
 
@@ -35,6 +37,10 @@ $array_length = count($array_text);
         <p>
             Il tuo testo è lungo <strong><?php echo $array_length; ?></strong> parole.
         </p>
+        <p>
+        <?php echo $censured_message; ?>
+        </p>
+        
     </main>
 </body>
 </html>
