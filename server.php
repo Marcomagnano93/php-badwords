@@ -3,7 +3,12 @@
 // var_dump($_POST) 
 
 $bad_word = $_POST['bad_word'];
-$text = $_POST['message']
+$text = $_POST['message'];
+
+$array_text = explode(' ', $text);
+
+$array_length = count($array_text);
+
 ?>
 
 
@@ -26,6 +31,9 @@ $text = $_POST['message']
         <h2><?php echo $bad_word; ?></h2>
         <p>
         <?php echo $text; ?>
+        </p>
+        <p>
+            Il tuo testo è lungo <strong><?php echo $array_length; ?></strong> parole.
         </p>
     </main>
 </body>
