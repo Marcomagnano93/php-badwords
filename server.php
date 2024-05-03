@@ -7,13 +7,16 @@ $text = $_POST['message'];
 
 $array_text = explode(' ', $text); //words
 
-$array_length = count($array_text); //number of words
-
 $censured_message = str_replace($bad_word, '***', $text); //message with ***
 $censured_message_words = array_diff($array_text, [$bad_word]); //censured words
 
-// var_dump($censured_message_words);
-$censured_array_length = count($censured_message_words);
+$bad_word_counter = 0;
+
+for ($i = 0; $i <= count($array_text); $i++) {
+    if ($array_text[$i] === $bad_word){
+        $bad_word_counter++;
+    };
+}
 ?>
 
 
@@ -41,15 +44,19 @@ $censured_array_length = count($censured_message_words);
         <?php echo $text; ?>
         </p>
         <p>
-            Il tuo testo è lungo <strong><?php echo $array_length; ?></strong> parole.
+            Il tuo testo è lungo <strong><?php echo count($array_text); ?></strong> parole.
         </p>
+        <h3>Ecco il tuo testo censurato: </h3>
         <p  class="text">
         <?php echo $censured_message; ?>
         </p>
         <p>
-            Il tuo testo senza parole censurate è lungo <strong><?php echo $censured_array_length; ?></strong> parole.
+            Il tuo testo senza parole censurate è lungo <strong><?php echo count($censured_message_words); ?></strong> parole.
         </p>
-        
+
+        <p>
+            Nel tuo testo sono avvenute <strong><?php echo $bad_word_counter ?></strong> sostituzioni.
+        </p>
     </main>
 </body>
 </html>
